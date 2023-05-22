@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.Button;
 
 import com.mca.taskmaster.activities.AddTaskActivity;
+import com.mca.taskmaster.activities.AllTasksActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,6 +22,14 @@ public class MainActivity extends AppCompatActivity {
             Intent goToAddTaskFormIntent = new Intent(MainActivity.this, AddTaskActivity.class);
 
             startActivity(goToAddTaskFormIntent);
+        });
+
+        Button goToAllTasksButton = (Button) findViewById(R.id.all_tasks_activity_button);
+
+        goToAllTasksButton.setOnClickListener(v -> {
+            Intent goToAllTasksIntent = new Intent(MainActivity.this, AllTasksActivity.class);
+
+            startActivity(goToAllTasksIntent);
         });
     }
 }
