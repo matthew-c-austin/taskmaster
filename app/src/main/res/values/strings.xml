@@ -13,4 +13,8 @@
     <string name="task_one_button_text">Code Challenge 27</string>
     <string name="task_two_button_text">Lab 27</string>
     <string name="task_three_button_text">Learning Journal: Class 27</string>
+    <string name="settings_title">Settings</string>
+    <string name="username_edit_text">Enter Username</string>
+    <string name="save_settings_button_text">Save</string>
+    <string name="settings_button">Settings</string>
 </resources>
