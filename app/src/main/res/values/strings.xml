@@ -10,4 +10,7 @@
     <string name="total_tasks_0">Total tasks: 0</string>
     <string name="task_title">Task Title</string>
     <string name="submitted_confirmation">Submitted!</string>
+    <string name="task_one_button_text">Code Challenge 27</string>
+    <string name="task_two_button_text">Lab 27</string>
+    <string name="task_three_button_text">Learning Journal: Class 27</string>
 </resources>
