@@ -1,0 +1,15 @@
+<resources>
+    <color name="green_primary">#4CAF50</color>
+    <color name="green_primary_variant">#388E3C</color>
+    <color name="green_on_primary">#FFFFFF</color>
+    <color name="brown_secondary">#795548</color>
+    <color name="brown_secondary_variant">#5D4037</color>
+    <color name="brown_on_secondary">#FFFFFF</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <!-- Night Mode Colors -->
+    <color name="dark_green_primary">#1B5E20</color>
+    <color name="dark_green_primary_variant">#004D40</color>
+    <color name="dark_brown_secondary">#3E2723</color>
+    <color name="dark_brown_secondary_variant">#2E1B17</color>
+</resources>
