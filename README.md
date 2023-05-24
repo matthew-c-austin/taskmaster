@@ -29,7 +29,7 @@ TaskMaster is a task manager app for Android.
 The homepage has a placeholder image and two buttons, one that links to the add a task activity and another that links to the all tasks activity.
 The homepage has a list of 3 hardcoded tasks that link to dynamically titled task detail activities. The top right of the main activity has a floating action button that links to the settings activity. The main page also still includes buttons that link to the add task activity and all tasks activity.
 
-[![main page](./readme-images/lab-27/main_01.png)](screenshots/lab-27/main_01.png)
+[![main page](screenshots/lab-27/settings_03.png)](screenshots/lab-27/settings_03.png)
 
 ### Task Details
 
@@ -45,7 +45,7 @@ The settings page allows a user to change their username and save it in SharedPr
 
 [![main page](screenshots/lab-27/settings_01.png)](screenshots/lab-27/settings_01.png)
 [![main page](screenshots/lab-27/settings_02.png)](screenshots/lab-27/settings_02.png)
-[![main page](screenshots/lab-27/settings_03.png)](screenshots/lab-
+[![main page](screenshots/lab-27/settings_03.png)](screenshots/lab-27/settings_03.png)
 
 ### Add a Task
 

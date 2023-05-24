@@ -7,7 +7,7 @@
     tools:context=".activities.SettingsActivity">
 
     <Button
-        android:id="@+id/saveSettingsButton"
+        android:id="@+id/button_settings_activity_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
