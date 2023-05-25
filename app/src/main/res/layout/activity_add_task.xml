@@ -38,7 +38,7 @@
         android:layout_marginTop="32dp"
         android:text="@string/add_task"
         app:layout_constraintStart_toStartOf="@+id/task_description_input"
-        app:layout_constraintTop_toBottomOf="@+id/task_description_input" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner_add_task_status" />
 
     <EditText
         android:id="@+id/my_task_input"
@@ -71,4 +71,16 @@
         android:text="@string/total_tasks_0"
         app:layout_constraintStart_toStartOf="@+id/button_add_task_activity_add_task"
         app:layout_constraintTop_toTopOf="@+id/submitted_text_view" />
+
+    <Spinner
+        android:id="@+id/spinner_add_task_status"
+        android:layout_width="222dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="64dp"
+        android:contentDescription="@string/task_status"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/task_description_input"
+        app:layout_constraintTop_toBottomOf="@+id/task_description_input" />
 </androidx.constraintlayout.widget.ConstraintLayout>
