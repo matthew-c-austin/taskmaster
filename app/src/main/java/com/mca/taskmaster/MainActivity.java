@@ -1,12 +1,13 @@
 package com.mca.taskmaster;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -15,6 +16,11 @@ import com.mca.taskmaster.activities.AddTaskActivity;
 import com.mca.taskmaster.activities.AllTasksActivity;
 import com.mca.taskmaster.activities.SettingsActivity;
 import com.mca.taskmaster.activities.TaskDetailActivity;
+import com.mca.taskmaster.adapter.TaskListRecyclerViewAdapter;
+import com.mca.taskmaster.models.Task;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
     setupSettingsButton();
-    setupTaskButtons();
     setupAddTaskButton();
     setupAllTasksButton();
     }
@@ -53,15 +58,22 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void setupTaskButtons() {
-        Button taskOneButton = findViewById(R.id.button_main_activity_task_one);
-        setupTaskButton(taskOneButton);
-        Button taskTwoButton = findViewById(R.id.button_main_activity_task_two);
-        setupTaskButton(taskTwoButton);
-        Button taskThreeButton = findViewById(R.id.button_main_activity_task_three);
-        setupTaskButton(taskThreeButton);
+    public void setupRecyclerView(List<Task> tasks) {
+        RecyclerView taskListRecyclerView = (RecyclerView) findViewById(R.id.mainActivityTaskListRecyclerView);
+
+        RecyclerView.LayoutManager taskListLayoutManager = new LinearLayoutManager(this);
+
+        TaskListRecyclerViewAdapter adapter = new TaskListRecyclerViewAdapter();
+        taskListRecyclerView.setAdapter(adapter);
+
+        List<Task> taskList = new ArrayList<>();
+        taskList.add(new Task("Lab: 28 - RecyclerView", "It's a lab. Fun.", Task.TaskStatus.IN_PROGRESS));
+        taskList.add(new Task("Code Challenge: Class 28", "Quick! Sort!", Task.TaskStatus.COMPLETE));
+        taskList.add(new Task("Learning Journal: Class 28", "Journal time.", Task.TaskStatus.ASSIGNED));
 
     }
+
+
 
     public void setupTaskButton(Button goToTaskButton) {
         goToTaskButton.setOnClickListener(v -> {
