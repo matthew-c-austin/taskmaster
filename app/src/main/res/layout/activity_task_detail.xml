@@ -31,7 +31,15 @@
         android:text="@string/task_detail_text_view"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/taskStatusTextView" />
+
+    <TextView
+        android:id="@+id/taskStatusTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/task_status"
+        app:layout_constraintStart_toStartOf="@+id/taskDetailTextView"
         app:layout_constraintTop_toBottomOf="@+id/text_view_task_detail_activity_task_title" />
 </androidx.constraintlayout.widget.ConstraintLayout>

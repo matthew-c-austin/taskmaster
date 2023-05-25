@@ -25,6 +25,8 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     public static final String TASK_NAME_EXTRAS_TAG = "taskName";
+    public static final String TASK_STATUS_EXTRAS_TAG = "taskStatus";
+    public static final String TASK_DESCRIPTION_EXTRAS_TAG = "taskDescription";
 
     SharedPreferences preferences;
 
@@ -33,9 +35,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-    setupSettingsButton();
-    setupAddTaskButton();
-    setupAllTasksButton();
+        List<Task> taskList = new ArrayList<>();
+        taskList.add(new Task("Lab: 28 - RecyclerView", "It's a lab. Fun.", Task.TaskStatus.IN_PROGRESS));
+        taskList.add(new Task("Code Challenge: Class 28", "Quick! Sort!", Task.TaskStatus.COMPLETE));
+        taskList.add(new Task("Learning Journal: Class 28", "Journal time.", Task.TaskStatus.ASSIGNED));
+
+        setupSettingsButton();
+        setupRecyclerView(taskList);
+        setupAddTaskButton();
+        setupAllTasksButton();
     }
 
     @Override
@@ -63,26 +71,9 @@ public class MainActivity extends AppCompatActivity {
 
         RecyclerView.LayoutManager taskListLayoutManager = new LinearLayoutManager(this);
 
-        TaskListRecyclerViewAdapter adapter = new TaskListRecyclerViewAdapter();
+        TaskListRecyclerViewAdapter adapter = new TaskListRecyclerViewAdapter(tasks, this);
         taskListRecyclerView.setAdapter(adapter);
 
-        List<Task> taskList = new ArrayList<>();
-        taskList.add(new Task("Lab: 28 - RecyclerView", "It's a lab. Fun.", Task.TaskStatus.IN_PROGRESS));
-        taskList.add(new Task("Code Challenge: Class 28", "Quick! Sort!", Task.TaskStatus.COMPLETE));
-        taskList.add(new Task("Learning Journal: Class 28", "Journal time.", Task.TaskStatus.ASSIGNED));
-
-    }
-
-
-
-    public void setupTaskButton(Button goToTaskButton) {
-        goToTaskButton.setOnClickListener(v -> {
-            Intent goToTaskIntent = new Intent(MainActivity.this, TaskDetailActivity.class);
-            String taskName = goToTaskButton.getText().toString();
-            goToTaskIntent.putExtra(TASK_NAME_EXTRAS_TAG, taskName);
-
-            startActivity(goToTaskIntent);
-        });
     }
 
     public void setupAddTaskButton() {

@@ -1,16 +1,36 @@
 package com.mca.taskmaster.adapter;
 
+import static com.mca.taskmaster.MainActivity.TASK_DESCRIPTION_EXTRAS_TAG;
+import static com.mca.taskmaster.MainActivity.TASK_NAME_EXTRAS_TAG;
+import static com.mca.taskmaster.MainActivity.TASK_STATUS_EXTRAS_TAG;
+
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.mca.taskmaster.MainActivity;
 import com.mca.taskmaster.R;
+import com.mca.taskmaster.activities.AddTaskActivity;
+import com.mca.taskmaster.activities.TaskDetailActivity;
+import com.mca.taskmaster.models.Task;
 
-public class TaskListRecyclerViewAdapter extends RecyclerView.Adapter {
+import java.util.List;
 
+public class TaskListRecyclerViewAdapter extends RecyclerView.Adapter<TaskListRecyclerViewAdapter.TaskListViewHolder> {
+
+    private List<Task> tasks;
+    Context callingActivity;
+
+    public TaskListRecyclerViewAdapter(List<Task> tasks, Context callingActivity) {
+        this.tasks = tasks;
+        this.callingActivity = callingActivity;
+    }
 
     @NonNull
     @Override
@@ -20,13 +40,31 @@ public class TaskListRecyclerViewAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull TaskListViewHolder holder, int position) {
+        Button taskFragmentButton = (Button) holder.itemView.findViewById(R.id.button_task_list_fragment_task_list_item);
+        Task task = tasks.get(position);
 
+        setupTaskButton(taskFragmentButton, task);
+    }
+
+    public void setupTaskButton(Button goToTaskButton, Task task) {
+        goToTaskButton.setOnClickListener(v -> {
+            Intent goToTaskDetailsIntent = new Intent(callingActivity, TaskDetailActivity.class);
+
+            String taskName = task.getTitle();
+            goToTaskDetailsIntent.putExtra(TASK_NAME_EXTRAS_TAG, taskName);
+            String taskDescription = task.getBody();
+            goToTaskDetailsIntent.putExtra(TASK_DESCRIPTION_EXTRAS_TAG, taskDescription);
+            String taskStatus =task.getStatus().toString();
+            goToTaskDetailsIntent.putExtra(TASK_STATUS_EXTRAS_TAG, taskStatus);
+
+            callingActivity.startActivity(goToTaskDetailsIntent);
+        });
     }
 
     @Override
     public int getItemCount() {
-        return 100;
+        return tasks.size();
     }
 
     public static class TaskListViewHolder extends RecyclerView.ViewHolder {
