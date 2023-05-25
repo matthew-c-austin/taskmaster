@@ -7,43 +7,75 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/all_tasks_activity_button"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/settingsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="64dp"
+        android:clickable="true"
+        android:contentDescription="@string/settings_button"
+        android:focusable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/my_tasks_title"
+        app:srcCompat="@android:drawable/ic_menu_preferences" />
+
+    <Button
+        android:id="@+id/button_main_activity_task_two"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:text="@string/task_two_button_text"
+        app:layout_constraintStart_toStartOf="@+id/my_tasks_title"
+        app:layout_constraintTop_toBottomOf="@+id/button_main_activity_task_one" />
+
+    <Button
+        android:id="@+id/button_main_activity_task_three"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/task_three_button_text"
+        app:layout_constraintStart_toStartOf="@+id/my_tasks_title"
+        app:layout_constraintTop_toBottomOf="@+id/button_main_activity_task_two" />
+
+    <Button
+        android:id="@+id/button_main_activity_task_one"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/task_one_button_text"
+        app:layout_constraintStart_toStartOf="@+id/my_tasks_title"
+        app:layout_constraintTop_toBottomOf="@+id/my_tasks_title" />
+
+    <Button
+        android:id="@+id/button_main_activity_all_tasks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="64dp"
         android:text="@string/all_tasks"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/button_main_activity_task_one" />
 
     <TextView
         android:id="@+id/my_tasks_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
         android:layout_marginStart="64dp"
         android:layout_marginTop="64dp"
+        android:layout_marginEnd="24dp"
         android:text="@string/my_tasks"
         android:textSize="34sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintEnd_toStartOf="@+id/settingsButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="280dp"
-        android:layout_height="343dp"
-        android:layout_marginTop="32dp"
-        android:contentDescription="@string/my_tasks_image"
-        app:layout_constraintStart_toStartOf="@+id/my_tasks_title"
-        app:layout_constraintTop_toBottomOf="@+id/my_tasks_title"
-        app:srcCompat="@android:mipmap/sym_def_app_icon" />
-
     <Button
-        android:id="@+id/add_task_activity_button"
+        android:id="@+id/button_main_activity_add_task"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginBottom="64dp"
         android:text="@string/add_task"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/button_main_activity_task_one" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

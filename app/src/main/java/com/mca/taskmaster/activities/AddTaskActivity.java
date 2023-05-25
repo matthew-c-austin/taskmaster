@@ -15,7 +15,7 @@ public class AddTaskActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
 
-        Button addTaskButton = (Button) findViewById(R.id.add_task_button);
+        Button addTaskButton = (Button) findViewById(R.id.button_add_task_activity_add_task);
 
         addTaskButton.setOnClickListener(v -> {
             ((TextView) findViewById(R.id.submitted_text_view)).setText(R.string.submitted_confirmation);
