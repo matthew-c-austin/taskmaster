@@ -17,6 +17,7 @@ import com.mca.taskmaster.activities.AllTasksActivity;
 import com.mca.taskmaster.activities.SettingsActivity;
 import com.mca.taskmaster.adapter.TaskListRecyclerViewAdapter;
 import com.mca.taskmaster.models.Task;
+import com.mca.taskmaster.models.TaskStatus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,9 +36,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         List<Task> taskList = new ArrayList<>();
-        taskList.add(new Task("Lab: 28 - RecyclerView", "It's a lab. Fun.", Task.TaskStatus.IN_PROGRESS));
-        taskList.add(new Task("Code Challenge: Class 28", "Quick! Sort!", Task.TaskStatus.COMPLETE));
-        taskList.add(new Task("Learning Journal: Class 28", "Journal time.", Task.TaskStatus.ASSIGNED));
+        taskList.add(new Task("Lab: 28 - RecyclerView", "It's a lab. Fun.", TaskStatus.IN_PROGRESS));
+        taskList.add(new Task("Code Challenge: Class 28", "Quick! Sort!", TaskStatus.COMPLETE));
+        taskList.add(new Task("Learning Journal: Class 28", "Journal time.",TaskStatus.ASSIGNED));
 
         setupSettingsButton();
         setupRecyclerView(taskList);

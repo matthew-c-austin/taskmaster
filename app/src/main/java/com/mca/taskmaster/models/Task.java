@@ -1,16 +1,17 @@
 package com.mca.taskmaster.models;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class Task {
+    @PrimaryKey(autoGenerate = true)
+    public long id;
     String title;
     String body;
     TaskStatus status;
 
-    public enum TaskStatus {
-        NEW,
-        ASSIGNED,
-        IN_PROGRESS,
-        COMPLETE
-    }
+
 
     public Task(String title, String body, TaskStatus status) {
         this.title = title;
