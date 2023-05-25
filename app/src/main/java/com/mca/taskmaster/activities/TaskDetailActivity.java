@@ -18,6 +18,9 @@ public class TaskDetailActivity extends AppCompatActivity {
 
         Intent callingIntent = getIntent();
         String taskNameString = null;
+        String taskDescriptionString = null;
+        String taskStatusString = null;
+
         if (callingIntent != null) {
             taskNameString = callingIntent.getStringExtra(MainActivity.TASK_NAME_EXTRAS_TAG);
 
@@ -26,6 +29,23 @@ public class TaskDetailActivity extends AppCompatActivity {
             if (taskNameString != null) {
                 taskNameTextView.setText(taskNameString);
             }
+
+            taskStatusString = callingIntent.getStringExtra(MainActivity.TASK_STATUS_EXTRAS_TAG);
+
+            TextView taskStatusTextView = findViewById(R.id.taskStatusTextView);
+
+            if (taskStatusString != null) {
+                taskStatusTextView.setText(taskStatusString);
+            }
+
+            taskDescriptionString = callingIntent.getStringExtra(MainActivity.TASK_DESCRIPTION_EXTRAS_TAG);
+
+            TextView taskDetailsTextView = findViewById(R.id.taskDetailTextView);
+
+            if (taskDescriptionString != null) {
+                taskDetailsTextView.setText(taskDescriptionString);
+            }
+
         }
     }
 }
