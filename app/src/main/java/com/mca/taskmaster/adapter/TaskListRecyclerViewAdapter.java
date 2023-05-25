@@ -4,6 +4,7 @@ import static com.mca.taskmaster.MainActivity.TASK_DESCRIPTION_EXTRAS_TAG;
 import static com.mca.taskmaster.MainActivity.TASK_NAME_EXTRAS_TAG;
 import static com.mca.taskmaster.MainActivity.TASK_STATUS_EXTRAS_TAG;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -40,7 +41,7 @@ public class TaskListRecyclerViewAdapter extends RecyclerView.Adapter<TaskListRe
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TaskListViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull TaskListViewHolder holder, @SuppressLint("RecyclerView")  int position) {
         Button taskFragmentButton = (Button) holder.itemView.findViewById(R.id.button_task_list_fragment_task_list_item);
         Task task = tasks.get(position);
         String taskName = task.getTitle();
@@ -63,6 +64,14 @@ public class TaskListRecyclerViewAdapter extends RecyclerView.Adapter<TaskListRe
 
             callingActivity.startActivity(goToTaskDetailsIntent);
         });
+    }
+
+    public void updateTasksData(List<Task> updatedTasks) {
+        int tasksSize = tasks.size();
+        tasks = updatedTasks;
+        while(tasksSize < updatedTasks.size()) {
+            this.notifyItemInserted(tasksSize++);
+        }
     }
 
     @Override

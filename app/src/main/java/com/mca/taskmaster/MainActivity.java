@@ -3,6 +3,7 @@ package com.mca.taskmaster;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,6 +17,7 @@ import com.mca.taskmaster.activities.AddTaskActivity;
 import com.mca.taskmaster.activities.AllTasksActivity;
 import com.mca.taskmaster.activities.SettingsActivity;
 import com.mca.taskmaster.adapter.TaskListRecyclerViewAdapter;
+import com.mca.taskmaster.database.TaskmasterDatabase;
 import com.mca.taskmaster.models.Task;
 import com.mca.taskmaster.models.TaskStatus;
 
@@ -27,7 +29,9 @@ public class MainActivity extends AppCompatActivity {
     public static final String TASK_NAME_EXTRAS_TAG = "taskName";
     public static final String TASK_STATUS_EXTRAS_TAG = "taskStatus";
     public static final String TASK_DESCRIPTION_EXTRAS_TAG = "taskDescription";
-
+    List<Task> tasks = new ArrayList<>();
+    TaskListRecyclerViewAdapter taskListRecyclerViewAdapter;
+    TaskmasterDatabase taskmasterDatabase;
     SharedPreferences preferences;
 
     @Override
@@ -40,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         taskList.add(new Task("Code Challenge: Class 28", "Quick! Sort!", TaskStatus.COMPLETE));
         taskList.add(new Task("Learning Journal: Class 28", "Journal time.",TaskStatus.ASSIGNED));
 
+        setupTasksFromDatabase();
         setupSettingsButton();
         setupRecyclerView(taskList);
         setupAddTaskButton();
@@ -57,6 +62,19 @@ public class MainActivity extends AppCompatActivity {
             String myTasksTitleTextView = username + "'s Tasks";
             ((TextView) findViewById(R.id.my_tasks_title)).setText(myTasksTitleTextView);
         }
+
+        setupTasksFromDatabase();
+        taskListRecyclerViewAdapter.updateTasksData(tasks);
+    }
+
+    public void setupTasksFromDatabase() {
+        taskmasterDatabase = Room.databaseBuilder(
+                        getApplicationContext(),
+                        TaskmasterDatabase.class,
+                        "mca-taskmaster")
+                .allowMainThreadQueries()
+                .build();
+        tasks = taskmasterDatabase.taskDao().findAll();
     }
 
     public void setupSettingsButton() {
@@ -72,8 +90,8 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView.LayoutManager taskListLayoutManager = new LinearLayoutManager(this);
         taskListRecyclerView.setLayoutManager(taskListLayoutManager);
 
-        TaskListRecyclerViewAdapter adapter = new TaskListRecyclerViewAdapter(tasks, this);
-        taskListRecyclerView.setAdapter(adapter);
+        taskListRecyclerViewAdapter = new TaskListRecyclerViewAdapter(tasks, this);
+        taskListRecyclerView.setAdapter(taskListRecyclerViewAdapter);
 
     }
 
