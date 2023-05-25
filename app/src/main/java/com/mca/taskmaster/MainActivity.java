@@ -15,7 +15,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mca.taskmaster.activities.AddTaskActivity;
 import com.mca.taskmaster.activities.AllTasksActivity;
 import com.mca.taskmaster.activities.SettingsActivity;
-import com.mca.taskmaster.activities.TaskDetailActivity;
 import com.mca.taskmaster.adapter.TaskListRecyclerViewAdapter;
 import com.mca.taskmaster.models.Task;
 
@@ -70,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView taskListRecyclerView = (RecyclerView) findViewById(R.id.mainActivityTaskListRecyclerView);
 
         RecyclerView.LayoutManager taskListLayoutManager = new LinearLayoutManager(this);
+        taskListRecyclerView.setLayoutManager(taskListLayoutManager);
 
         TaskListRecyclerViewAdapter adapter = new TaskListRecyclerViewAdapter(tasks, this);
         taskListRecyclerView.setAdapter(adapter);

@@ -43,6 +43,8 @@ public class TaskListRecyclerViewAdapter extends RecyclerView.Adapter<TaskListRe
     public void onBindViewHolder(@NonNull TaskListViewHolder holder, int position) {
         Button taskFragmentButton = (Button) holder.itemView.findViewById(R.id.button_task_list_fragment_task_list_item);
         Task task = tasks.get(position);
+        String taskName = task.getTitle();
+        taskFragmentButton.setText(taskName);
 
         setupTaskButton(taskFragmentButton, task);
     }
@@ -53,6 +55,7 @@ public class TaskListRecyclerViewAdapter extends RecyclerView.Adapter<TaskListRe
 
             String taskName = task.getTitle();
             goToTaskDetailsIntent.putExtra(TASK_NAME_EXTRAS_TAG, taskName);
+
             String taskDescription = task.getBody();
             goToTaskDetailsIntent.putExtra(TASK_DESCRIPTION_EXTRAS_TAG, taskDescription);
             String taskStatus =task.getStatus().toString();
