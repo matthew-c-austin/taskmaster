@@ -19,7 +19,6 @@ import com.mca.taskmaster.activities.SettingsActivity;
 import com.mca.taskmaster.adapter.TaskListRecyclerViewAdapter;
 import com.mca.taskmaster.database.TaskmasterDatabase;
 import com.mca.taskmaster.models.Task;
-import com.mca.taskmaster.models.TaskStatus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,14 +38,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        List<Task> taskList = new ArrayList<>();
-        taskList.add(new Task("Lab: 28 - RecyclerView", "It's a lab. Fun.", TaskStatus.IN_PROGRESS));
-        taskList.add(new Task("Code Challenge: Class 28", "Quick! Sort!", TaskStatus.COMPLETE));
-        taskList.add(new Task("Learning Journal: Class 28", "Journal time.",TaskStatus.ASSIGNED));
-
         setupTasksFromDatabase();
         setupSettingsButton();
-        setupRecyclerView(taskList);
+        setupRecyclerView();
         setupAddTaskButton();
         setupAllTasksButton();
     }
@@ -75,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 .allowMainThreadQueries()
                 .build();
         tasks = taskmasterDatabase.taskDao().findAll();
+
     }
 
     public void setupSettingsButton() {
@@ -84,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void setupRecyclerView(List<Task> tasks) {
+    public void setupRecyclerView() {
         RecyclerView taskListRecyclerView = (RecyclerView) findViewById(R.id.mainActivityTaskListRecyclerView);
 
         RecyclerView.LayoutManager taskListLayoutManager = new LinearLayoutManager(this);

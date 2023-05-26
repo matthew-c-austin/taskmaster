@@ -15,9 +15,7 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mca.taskmaster.MainActivity;
 import com.mca.taskmaster.R;
-import com.mca.taskmaster.activities.AddTaskActivity;
 import com.mca.taskmaster.activities.TaskDetailActivity;
 import com.mca.taskmaster.models.Task;
 
@@ -67,11 +65,8 @@ public class TaskListRecyclerViewAdapter extends RecyclerView.Adapter<TaskListRe
     }
 
     public void updateTasksData(List<Task> updatedTasks) {
-        int tasksSize = tasks.size();
         tasks = updatedTasks;
-        while(tasksSize < updatedTasks.size()) {
-            this.notifyItemInserted(tasksSize++);
-        }
+        notifyDataSetChanged();
     }
 
     @Override

@@ -7,11 +7,9 @@ import androidx.room.PrimaryKey;
 public class Task {
     @PrimaryKey(autoGenerate = true)
     public long id;
-    String title;
-    String body;
-    TaskStatus status;
-
-
+    private String title;
+    private String body;
+    private TaskStatus status;
 
     public Task(String title, String body, TaskStatus status) {
         this.title = title;

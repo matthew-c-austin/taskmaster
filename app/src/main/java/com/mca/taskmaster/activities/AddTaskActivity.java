@@ -28,7 +28,7 @@ public class AddTaskActivity extends AppCompatActivity {
         taskmasterDatabase = Room.databaseBuilder(
                         getApplicationContext(),
                         TaskmasterDatabase.class,
-                        "mca_taskmaster")
+                        "mca-taskmaster")
                 .allowMainThreadQueries()
                 .build();
 
