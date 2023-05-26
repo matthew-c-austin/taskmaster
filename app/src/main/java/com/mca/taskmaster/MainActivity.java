@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String TASK_NAME_EXTRAS_TAG = "taskName";
     public static final String TASK_STATUS_EXTRAS_TAG = "taskStatus";
     public static final String TASK_DESCRIPTION_EXTRAS_TAG = "taskDescription";
+    public static final String DATABASE_NAME = "mca-taskmaster";
     List<Task> tasks = new ArrayList<>();
     TaskListRecyclerViewAdapter taskListRecyclerViewAdapter;
     TaskmasterDatabase taskmasterDatabase;
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         taskmasterDatabase = Room.databaseBuilder(
                         getApplicationContext(),
                         TaskmasterDatabase.class,
-                        "mca-taskmaster")
+                        DATABASE_NAME)
                 .allowMainThreadQueries()
                 .build();
         tasks = taskmasterDatabase.taskDao().findAll();

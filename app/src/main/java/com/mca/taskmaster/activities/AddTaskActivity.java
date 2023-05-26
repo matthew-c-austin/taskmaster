@@ -1,5 +1,7 @@
 package com.mca.taskmaster.activities;
 
+import static com.mca.taskmaster.MainActivity.DATABASE_NAME;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
@@ -28,7 +30,7 @@ public class AddTaskActivity extends AppCompatActivity {
         taskmasterDatabase = Room.databaseBuilder(
                         getApplicationContext(),
                         TaskmasterDatabase.class,
-                        "mca-taskmaster")
+                        DATABASE_NAME)
                 .allowMainThreadQueries()
                 .build();
 
