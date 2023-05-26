@@ -4,6 +4,15 @@ TaskMaster is a task manager app for Android.
 
 ## Changelog
 
+### Lab 29
+
+- Added a local SQLite database with Android Room.
+  - New tasks are saved to the database.
+  - On resume the main page pulls the most recent task data from the database.
+- Add task activity is updated to include a spinner for task status.
+  - A toast appears after adding a task to let the user know the task was saved.
+  - Fields are cleared and focus it put on the title edit text for a new task to be input.
+
 ### Lab 28
 
 Implements basic activities for adding a task, viewing all tasks, and the main app screen.
@@ -37,7 +46,7 @@ Implements basic activities for adding a task, viewing all tasks, and the main a
 The homepage has a placeholder image and two buttons, one that links to the add a task activity and another that links to the all tasks activity.
 The homepage has a list of 3 hardcoded tasks that link to dynamically titled task detail activities. The top right of the main activity has a floating action button that links to the settings activity. The main page also still includes buttons that link to the add task activity and all tasks activity.
 
-[![main page](screenshots/lab-28/main-activity.PNG)](screenshots/lab-28/main-activity.PNG)
+[![main page](screenshots/lab-29/main-activity.PNG)](screenshots/lab-29/main-activity.PNG)
 
 ### Task Details
 
@@ -59,7 +68,7 @@ The settings page allows a user to change their username and save it in SharedPr
 
 The add a task view takes user input for a task name and description. Submitting the task displays an animated "submitted" message as well as increments the task count. These features are superficial at the moment and will reset each time the view is loaded.
 
-![add-task-activity-submitted](screenshots/lab-26/add-task-activity-submitted.PNG)
+![add-task-activity](screenshots/lab-29/add-task-activity.PNG)
 
 ### All Tasks
 
