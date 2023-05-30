@@ -4,6 +4,10 @@ TaskMaster is a task manager app for Android.
 
 ## Changelog
 
+### Lab 31
+
+- Added three Espresso tests to the current configuration.
+
 ### Lab 29
 
 - Added a local SQLite database with Android Room.
