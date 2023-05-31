@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mca.taskmaster.R;
 import com.mca.taskmaster.activities.TaskDetailActivity;
-import com.mca.taskmaster.models.Task;
+import com.amplifyframework.datastore.generated.model.Task;
 
 import java.util.List;
 

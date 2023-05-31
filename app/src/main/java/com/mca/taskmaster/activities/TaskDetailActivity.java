@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.amplifyframework.datastore.generated.model.TaskStatus;
 import com.mca.taskmaster.MainActivity;
 import com.mca.taskmaster.R;
+import com.mca.taskmaster.utils.TaskStatusUtility;
 
 public class TaskDetailActivity extends AppCompatActivity {
 
@@ -20,6 +22,7 @@ public class TaskDetailActivity extends AppCompatActivity {
         String taskNameString = null;
         String taskDescriptionString = null;
         String taskStatusString = null;
+        TaskStatus status = null;
 
         if (callingIntent != null) {
             taskNameString = callingIntent.getStringExtra(MainActivity.TASK_NAME_EXTRAS_TAG);
@@ -31,11 +34,12 @@ public class TaskDetailActivity extends AppCompatActivity {
             }
 
             taskStatusString = callingIntent.getStringExtra(MainActivity.TASK_STATUS_EXTRAS_TAG);
+            status = TaskStatus.valueOf(taskStatusString);
 
             TextView taskStatusTextView = findViewById(R.id.taskStatusTextView);
 
             if (taskStatusString != null) {
-                taskStatusTextView.setText(taskStatusString);
+                taskStatusTextView.setText(TaskStatusUtility.taskStatusToString(status));
             }
 
             taskDescriptionString = callingIntent.getStringExtra(MainActivity.TASK_DESCRIPTION_EXTRAS_TAG);

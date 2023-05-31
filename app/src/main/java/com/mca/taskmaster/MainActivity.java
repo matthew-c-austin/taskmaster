@@ -3,35 +3,35 @@ package com.mca.taskmaster;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Room;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.amplifyframework.api.graphql.model.ModelQuery;
+import com.amplifyframework.core.Amplify;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mca.taskmaster.activities.AddTaskActivity;
 import com.mca.taskmaster.activities.AllTasksActivity;
 import com.mca.taskmaster.activities.SettingsActivity;
 import com.mca.taskmaster.adapter.TaskListRecyclerViewAdapter;
-import com.mca.taskmaster.database.TaskmasterDatabase;
-import com.mca.taskmaster.models.Task;
+import com.amplifyframework.datastore.generated.model.Task;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String TAG = "main_activity_tag";
     public static final String TASK_NAME_EXTRAS_TAG = "taskName";
     public static final String TASK_STATUS_EXTRAS_TAG = "taskStatus";
     public static final String TASK_DESCRIPTION_EXTRAS_TAG = "taskDescription";
-    public static final String DATABASE_NAME = "mca-taskmaster";
     List<Task> tasks = new ArrayList<>();
     TaskListRecyclerViewAdapter taskListRecyclerViewAdapter;
-    TaskmasterDatabase taskmasterDatabase;
     SharedPreferences preferences;
 
     @Override
@@ -63,13 +63,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setupTasksFromDatabase() {
-        taskmasterDatabase = Room.databaseBuilder(
-                        getApplicationContext(),
-                        TaskmasterDatabase.class,
-                        DATABASE_NAME)
-                .allowMainThreadQueries()
-                .build();
-        tasks = taskmasterDatabase.taskDao().findAll();
+        tasks.clear();
+        Amplify.API.query(
+                ModelQuery.list(Task.class),
+                success -> {
+                    Log.i(TAG, "Read products successfully");
+                    for (Task task : success.getData())
+                        tasks.add(task);
+                    runOnUiThread(() -> taskListRecyclerViewAdapter.notifyDataSetChanged());
+        },
+                failure -> Log.i(TAG, "Failed to read products")
+        );
 
     }
 
