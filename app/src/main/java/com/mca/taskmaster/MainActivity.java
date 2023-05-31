@@ -3,7 +3,6 @@ package com.mca.taskmaster;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Room;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,7 +16,6 @@ import com.mca.taskmaster.activities.AddTaskActivity;
 import com.mca.taskmaster.activities.AllTasksActivity;
 import com.mca.taskmaster.activities.SettingsActivity;
 import com.mca.taskmaster.adapter.TaskListRecyclerViewAdapter;
-import com.mca.taskmaster.database.TaskmasterDatabase;
 import com.mca.taskmaster.models.Task;
 
 import java.util.ArrayList;
@@ -31,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
     public static final String DATABASE_NAME = "mca-taskmaster";
     List<Task> tasks = new ArrayList<>();
     TaskListRecyclerViewAdapter taskListRecyclerViewAdapter;
-    TaskmasterDatabase taskmasterDatabase;
     SharedPreferences preferences;
 
     @Override
@@ -63,13 +60,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setupTasksFromDatabase() {
-        taskmasterDatabase = Room.databaseBuilder(
-                        getApplicationContext(),
-                        TaskmasterDatabase.class,
-                        DATABASE_NAME)
-                .allowMainThreadQueries()
-                .build();
-        tasks = taskmasterDatabase.taskDao().findAll();
+//        taskmasterDatabase = Room.databaseBuilder(
+//                        getApplicationContext(),
+//                        TaskmasterDatabase.class,
+//                        DATABASE_NAME)
+//                .allowMainThreadQueries()
+//                .build();
+//        tasks = taskmasterDatabase.taskDao().findAll();
 
     }
 
