@@ -4,6 +4,16 @@ TaskMaster is a task manager app for Android.
 
 ## Changelog
 
+### Lab 32
+
+- Removed local Room database.
+- Removed local models.
+- Added cloud Amplify database.
+  - Added GraphQL schema and Amplify models.
+  - RecyclerView is filled from an Amplify api query.
+  - Added task activity uses Amplify api to add items to the cloud.
+- Added TaskStatusUtility class to allow for continued usage of TaskStatus enums.
+
 ### Lab 31
 
 - Added three Espresso tests to the current configuration.
