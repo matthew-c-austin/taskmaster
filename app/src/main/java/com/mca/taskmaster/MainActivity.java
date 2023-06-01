@@ -12,8 +12,10 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.generated.model.Team;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mca.taskmaster.activities.AddTaskActivity;
 import com.mca.taskmaster.activities.AllTasksActivity;
@@ -38,6 +40,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Hardcoded teams
+        Team workTeam =  Team.builder()
+                .name("Work")
+                .build();
+        Amplify.API.mutate(
+                ModelMutation.create(workTeam),
+                success -> Log.i(TAG, "Added"),
+                failure -> Log.i(TAG, "Failed")
+        );
 
         setupTasksFromDatabase();
         setupSettingsButton();
