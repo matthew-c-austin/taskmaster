@@ -41,15 +41,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Hardcoded teams
-        Team workTeam =  Team.builder()
-                .name("Work")
-                .build();
-        Amplify.API.mutate(
-                ModelMutation.create(workTeam),
-                success -> Log.i(TAG, "Added"),
-                failure -> Log.i(TAG, "Failed")
-        );
+//        // Hardcoded teams
+//        Team workTeam =  Team.builder()
+//                .name("Party")
+//                .build();
+//        Amplify.API.mutate(
+//                ModelMutation.create(workTeam),
+//                success -> Log.i(TAG, "Added"),
+//                failure -> Log.i(TAG, "Failed")
+//        );
 
         setupTasksFromDatabase();
         setupSettingsButton();
