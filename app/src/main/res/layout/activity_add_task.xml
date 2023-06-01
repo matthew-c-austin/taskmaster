@@ -51,7 +51,7 @@
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="@+id/add_task_title"
-        app:layout_constraintTop_toBottomOf="@+id/add_task_title"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_add_task_team"
         tools:ignore="LabelFor" />
 
     <TextView
@@ -83,4 +83,13 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/task_description_input"
         app:layout_constraintTop_toBottomOf="@+id/task_description_input" />
+
+    <Spinner
+        android:id="@+id/spinner_add_task_team"
+        android:layout_width="222dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="32dp"
+        android:contentDescription="@string/task_status"
+        app:layout_constraintStart_toStartOf="@+id/add_task_title"
+        app:layout_constraintTop_toBottomOf="@+id/add_task_title" />
 </androidx.constraintlayout.widget.ConstraintLayout>
