@@ -77,11 +77,8 @@
         android:layout_width="222dp"
         android:layout_height="48dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="64dp"
         android:contentDescription="@string/task_status"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/task_description_input"
+        app:layout_constraintStart_toStartOf="@+id/add_task_status_textView"
         app:layout_constraintTop_toBottomOf="@+id/task_description_input" />
 
     <Spinner
@@ -98,7 +95,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/team_title"
-        app:layout_constraintBaseline_toBaselineOf="@+id/spinner_add_task_team"
+        app:layout_constraintBottom_toTopOf="@+id/spinner_add_task_team"
         app:layout_constraintStart_toStartOf="@+id/spinner_add_task_team" />
 
     <TextView
@@ -106,6 +103,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/task_status_title"
-        app:layout_constraintBaseline_toBaselineOf="@+id/spinner_add_task_status"
-        app:layout_constraintStart_toStartOf="@+id/spinner_add_task_status" />
+        app:layout_constraintBottom_toTopOf="@+id/spinner_add_task_status"
+        tools:layout_editor_absoluteX="64dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

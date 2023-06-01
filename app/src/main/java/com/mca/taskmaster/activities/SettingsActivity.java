@@ -36,6 +36,7 @@ public class SettingsActivity extends AppCompatActivity {
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         populateUsernameEditText(preferences);
+        populateTeamSpinner(preferences);
         setupSaveButton(preferences);
     }
 

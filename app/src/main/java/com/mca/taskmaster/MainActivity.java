@@ -75,16 +75,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setupTasksFromDatabase() {
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String currentTeam = preferences.getString(SettingsActivity.TEAM_TAG, "All");
         tasks.clear();
         Amplify.API.query(
                 ModelQuery.list(Task.class),
                 success -> {
-                    Log.i(TAG, "Read products successfully");
-                    for (Task task : success.getData())
-                        tasks.add(task);
+                    Log.i(TAG, "Read Tasks successfully");
+                    for (Task task : success.getData()) {
+                        if (currentTeam.equals("All") || task.getTeam().getName().equals(currentTeam)) {
+                            tasks.add(task);
+                        }
+                    }
                     runOnUiThread(() -> taskListRecyclerViewAdapter.notifyDataSetChanged());
         },
-                failure -> Log.i(TAG, "Failed to read products")
+                failure -> Log.i(TAG, "Failed to read Tasks")
         );
 
     }
