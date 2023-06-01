@@ -76,33 +76,33 @@
         android:id="@+id/spinner_add_task_status"
         android:layout_width="222dp"
         android:layout_height="48dp"
-        android:layout_marginTop="32dp"
         android:contentDescription="@string/task_status"
         app:layout_constraintStart_toStartOf="@+id/add_task_status_textView"
-        app:layout_constraintTop_toBottomOf="@+id/task_description_input" />
+        app:layout_constraintTop_toBottomOf="@+id/add_task_status_textView" />
 
     <Spinner
         android:id="@+id/spinner_add_task_team"
         android:layout_width="222dp"
         android:layout_height="48dp"
-        android:layout_marginTop="32dp"
         android:contentDescription="@string/team"
         app:layout_constraintStart_toStartOf="@+id/add_task_title"
-        app:layout_constraintTop_toBottomOf="@+id/add_task_title" />
+        app:layout_constraintTop_toBottomOf="@+id/add_task_team_textView" />
 
     <TextView
         android:id="@+id/add_task_team_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:text="@string/team_title"
-        app:layout_constraintBottom_toTopOf="@+id/spinner_add_task_team"
-        app:layout_constraintStart_toStartOf="@+id/spinner_add_task_team" />
+        app:layout_constraintStart_toStartOf="@+id/spinner_add_task_team"
+        app:layout_constraintTop_toBottomOf="@+id/add_task_title" />
 
     <TextView
         android:id="@+id/add_task_status_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:text="@string/task_status_title"
-        app:layout_constraintBottom_toTopOf="@+id/spinner_add_task_status"
-        tools:layout_editor_absoluteX="64dp" />
+        app:layout_constraintStart_toStartOf="@+id/task_description_input"
+        app:layout_constraintTop_toBottomOf="@+id/task_description_input" />
 </androidx.constraintlayout.widget.ConstraintLayout>

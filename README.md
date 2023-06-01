@@ -4,6 +4,15 @@ TaskMaster is a task manager app for Android.
 
 ## Changelog
 
+### Lab 33
+
+- Add new Team feature.
+  - Tasks are part of a team when created.
+  - Currently 3 hard coded teams exist: Work, School, Party.
+  - Spinner selector displays team choices when creating a task.
+- Update to settings activity to allow saving a current team to shared preferences.
+  - The main activity filters the recycler view based on the current saved preference.
+
 ### Lab 32
 
 - Removed local Room database.
@@ -60,7 +69,7 @@ Implements basic activities for adding a task, viewing all tasks, and the main a
 The homepage has a placeholder image and two buttons, one that links to the add a task activity and another that links to the all tasks activity.
 The homepage has a list of 3 hardcoded tasks that link to dynamically titled task detail activities. The top right of the main activity has a floating action button that links to the settings activity. The main page also still includes buttons that link to the add task activity and all tasks activity.
 
-[![main page](screenshots/lab-29/main-activity.PNG)](screenshots/lab-29/main-activity.PNG)
+[![main page](screenshots/lab-33/main-activity.PNG)](screenshots/lab-33/main-activity.PNG)
 
 ### Task Details
 
@@ -74,15 +83,13 @@ The task details activity display a title the is taken from the corresponding bu
 
 The settings page allows a user to change their username and save it in SharedPreferences. The saved username is reflected on the homepage after saving one. Submitting an empty string will revert the display back to "My Tasks".
 
-[![main page](screenshots/lab-27/settings_01.png)](screenshots/lab-27/settings_01.png)
-[![main page](screenshots/lab-27/settings_02.png)](screenshots/lab-27/settings_02.png)
-[![main page](screenshots/lab-27/settings_03.png)](screenshots/lab-27/settings_03.png)
+[![main page](screenshots/lab-33/settings_01.png)](screenshots/lab-27/settings_01.png)
 
 ### Add a Task
 
 The add a task view takes user input for a task name and description. Submitting the task displays an animated "submitted" message as well as increments the task count. These features are superficial at the moment and will reset each time the view is loaded.
 
-![add-task-activity](screenshots/lab-29/add-task-activity.PNG)
+![add-task-activity](screenshots/lab-33/add-task-activity.PNG)
 
 ### All Tasks
 
