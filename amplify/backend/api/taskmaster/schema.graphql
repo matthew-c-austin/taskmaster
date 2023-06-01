@@ -7,6 +7,15 @@ type Task @model @auth(rules: [{allow: public}]){
   title: String!
   body: String!
   status: TaskStatus
+  teamId: ID! @index(name: "byTitle", sortKeyFields: ["title"])
+  team: Team @belongsTo(fields: ["teamId"])
+
+}
+
+type Team @model @auth(rules: [{allow: public}]) {
+    id: ID!
+    name: String!
+    tasks: [Task] @hasMany(indexName: "byTitle", fields: ["id"])
 }
 
 enum TaskStatus {
