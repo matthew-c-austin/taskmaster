@@ -12,8 +12,10 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.generated.model.Team;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mca.taskmaster.activities.AddTaskActivity;
 import com.mca.taskmaster.activities.AllTasksActivity;
@@ -39,6 +41,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Hardcoded teams
+//        Team team =  Team.builder()
+//                .name("Party")
+//                .build();
+//        Amplify.API.mutate(
+//                ModelMutation.create(team),
+//                success -> Log.i(TAG, "Added"),
+//                failure -> Log.i(TAG, "Failed")
+//        );
+
         setupTasksFromDatabase();
         setupSettingsButton();
         setupRecyclerView();
@@ -63,16 +75,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setupTasksFromDatabase() {
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String currentTeam = preferences.getString(SettingsActivity.TEAM_TAG, "All");
         tasks.clear();
         Amplify.API.query(
                 ModelQuery.list(Task.class),
                 success -> {
-                    Log.i(TAG, "Read products successfully");
-                    for (Task task : success.getData())
-                        tasks.add(task);
+                    Log.i(TAG, "Read Tasks successfully");
+                    for (Task task : success.getData()) {
+                        if (currentTeam.equals("All") || task.getTeam().getName().equals(currentTeam)) {
+                            tasks.add(task);
+                        }
+                    }
                     runOnUiThread(() -> taskListRecyclerViewAdapter.notifyDataSetChanged());
         },
-                failure -> Log.i(TAG, "Failed to read products")
+                failure -> Log.i(TAG, "Failed to read Tasks")
         );
 
     }
