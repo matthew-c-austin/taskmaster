@@ -24,4 +24,5 @@
     <string name="task_status">Task Status</string>
     <string name="task_status_title">Task Status</string>
     <string name="team_title">Team</string>
+    <string name="team">Team</string>
 </resources>

@@ -6,14 +6,31 @@
     android:layout_height="match_parent"
     tools:context=".activities.SettingsActivity">
 
+    <Spinner
+        android:id="@+id/spinner_settings_team"
+        android:layout_width="222dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="36dp"
+        android:contentDescription="@string/team"
+        app:layout_constraintStart_toStartOf="@+id/usernameEditText"
+        app:layout_constraintTop_toBottomOf="@+id/usernameEditText" />
+
+    <TextView
+        android:id="@+id/add_task_team_textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/team_title"
+        app:layout_constraintBaseline_toBaselineOf="@+id/spinner_settings_team"
+        app:layout_constraintStart_toStartOf="@+id/spinner_settings_team" />
+
     <Button
         android:id="@+id/button_settings_activity_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/save_settings_button_text"
-        app:layout_constraintStart_toStartOf="@+id/usernameEditText"
-        app:layout_constraintTop_toBottomOf="@+id/usernameEditText" />
+        app:layout_constraintStart_toStartOf="@+id/spinner_settings_team"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_settings_team" />
 
     <EditText
         android:id="@+id/usernameEditText"
