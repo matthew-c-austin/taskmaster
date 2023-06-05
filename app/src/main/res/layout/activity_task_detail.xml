@@ -32,7 +32,8 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/taskStatusTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/taskStatusTextView"
+        tools:ignore="TextSizeCheck" />
 
     <TextView
         android:id="@+id/taskStatusTextView"

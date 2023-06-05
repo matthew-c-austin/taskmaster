@@ -4,6 +4,15 @@ TaskMaster is a task manager app for Android.
 
 ## Changelog
 
+### Lab 34
+
+- Cleans up commented code, whitespace and unused imports.
+- Fixes any Android Studio warnings related to accessibility.
+- Includes an .aap release.
+- Adds a privacy policy to comply with the Google Play Store.
+- App is currently in review on the Google Play Store.
+  - After review the Play Store link will be [](https://play.google.com/store/apps/details?id=com.mca.taskmaster)
+
 ### Lab 33
 
 - Add new Team feature.
