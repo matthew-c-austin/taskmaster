@@ -21,6 +21,7 @@ import com.amplifyframework.auth.options.AuthSignOutOptions;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Team;
 import com.mca.taskmaster.R;
+import com.mca.taskmaster.activities.authentication.LoginActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -145,7 +146,7 @@ public class SettingsActivity extends AppCompatActivity {
     public void setUpLoginButton() {
         Button loginButton = findViewById(R.id.userProfileActivityLoginButton);
         loginButton.setOnClickListener(v -> {
-            Intent goToLoginActivity = new Intent(UserProfileActivity.this, LoginActivity.class);
+            Intent goToLoginActivity = new Intent(SettingsActivity.this, LoginActivity.class);
             startActivity(goToLoginActivity);
         });
     }

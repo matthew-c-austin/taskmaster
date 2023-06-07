@@ -105,6 +105,8 @@ The task details activity display a title the is taken from the corresponding bu
 The settings page allows a user to change their username and save it in SharedPreferences. The saved username is reflected on the homepage after saving one. Submitting an empty string will revert the display back to "My Tasks".
 
 [![main page](screenshots/lab-33/settings_01.png)](screenshots/lab-27/settings_01.png)
+[![main page](screenshots/lab-36/settings-logged-out.PNG)](screenshots/lab-36/settings-logged-out.PNG)
+[![main page](screenshots/lab-36/settings-logged-in.PNG)](screenshots/lab-36/settings-logged-in.PNG)
 
 ### Add a Task
 
@@ -117,3 +119,11 @@ The add a task view takes user input for a task name and description. Submitting
 The all tasks view will someday be home to a list of current tasks. Currently there is just a placeholder image and the title.
 
 ![all-tasks-activity](screenshots/lab-26/all-tasks-activity.PNG)
+
+### Log In, Sign Up, Verify
+
+The sign up and verify activities control the Amplify Auth initial setup. The log in page handles future log ins. Log outs are preformed in the settings activity.
+
+[![main page](screenshots/lab-36/login-activity.PNG)](screenshots/lab-36/login-activity.PNG)
+[![main page](screenshots/lab-36/verify-account.PNG)](screenshots/lab-36/verify-account.PNG)
+
