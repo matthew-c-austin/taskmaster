@@ -41,16 +41,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Hardcoded teams
-//        Team team =  Team.builder()
-//                .name("Party")
-//                .build();
-//        Amplify.API.mutate(
-//                ModelMutation.create(team),
-//                success -> Log.i(TAG, "Added"),
-//                failure -> Log.i(TAG, "Failed")
-//        );
-
         setupTasksFromDatabase();
         setupSettingsButton();
         setupRecyclerView();

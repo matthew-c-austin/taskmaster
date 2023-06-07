@@ -37,8 +37,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/add_task"
+        android:textColor="#263238"
         app:layout_constraintStart_toStartOf="@+id/task_description_input"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_add_task_status" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner_add_task_status"
+        tools:ignore="DuplicateSpeakableTextCheck" />
 
     <EditText
         android:id="@+id/my_task_input"
@@ -78,7 +80,8 @@
         android:layout_height="48dp"
         android:contentDescription="@string/task_status"
         app:layout_constraintStart_toStartOf="@+id/add_task_status_textView"
-        app:layout_constraintTop_toBottomOf="@+id/add_task_status_textView" />
+        app:layout_constraintTop_toBottomOf="@+id/add_task_status_textView"
+        tools:ignore="DuplicateSpeakableTextCheck" />
 
     <Spinner
         android:id="@+id/spinner_add_task_team"
@@ -86,7 +89,8 @@
         android:layout_height="48dp"
         android:contentDescription="@string/team"
         app:layout_constraintStart_toStartOf="@+id/add_task_title"
-        app:layout_constraintTop_toBottomOf="@+id/add_task_team_textView" />
+        app:layout_constraintTop_toBottomOf="@+id/add_task_team_textView"
+        tools:ignore="DuplicateSpeakableTextCheck" />
 
     <TextView
         android:id="@+id/add_task_team_textView"

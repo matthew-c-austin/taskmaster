@@ -16,7 +16,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/all_tasks_title"
         app:layout_constraintTop_toBottomOf="@+id/all_tasks_title"
-        app:srcCompat="@android:mipmap/sym_def_app_icon" />
+        app:srcCompat="@android:mipmap/sym_def_app_icon"
+        tools:ignore="ImageContrastCheck" />
 
     <TextView
         android:id="@+id/all_tasks_title"

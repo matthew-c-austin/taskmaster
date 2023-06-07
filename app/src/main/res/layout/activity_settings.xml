@@ -12,7 +12,8 @@
         android:layout_height="48dp"
         android:contentDescription="@string/team"
         app:layout_constraintStart_toStartOf="@+id/usernameEditText"
-        app:layout_constraintTop_toBottomOf="@+id/settings_team_textView" />
+        app:layout_constraintTop_toBottomOf="@+id/settings_team_textView"
+        tools:ignore="DuplicateSpeakableTextCheck" />
 
     <TextView
         android:id="@+id/settings_team_textView"
@@ -29,6 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/save_settings_button_text"
+        android:textColor="#263238"
         app:layout_constraintStart_toStartOf="@+id/spinner_settings_team"
         app:layout_constraintTop_toBottomOf="@+id/spinner_settings_team" />
 
