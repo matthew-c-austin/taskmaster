@@ -4,6 +4,18 @@ TaskMaster is a task manager app for Android.
 
 ## Changelog
 
+### Lab 36
+
+- Adds Amplify Auth
+  - If the user is not logged in the app launches to the log in activity.
+  - Login activity has a log in form as well as a button to a sign up activity.
+  - The sign up activity has a form for creating an Amplify Auth hosted account
+    - After successful creation the user is forwarded to the verify activity.
+  - The verify activity allow the user to enter the verification code received via email.
+    - After successful creation the user is forwarded to the log in activity.
+- The currently logged in user's nickname appears as before with "My Tasks" if the user's name is an empty string.
+- The all tasks activity has been removed as well as the button for all tasks on the main activity.
+
 ### Lab 34
 
 - Cleans up commented code, whitespace and unused imports.

@@ -25,4 +25,14 @@
     <string name="task_status_title">Task Status</string>
     <string name="team_title">Team</string>
     <string name="team">Team</string>
+    <string name="sign_up_page">Sign Up Page</string>
+    <string name="email_hint">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="verify_account_title">Verify Account</string>
+    <string name="verify">Verify</string>
+    <string name="verification_number">Verification Number</string>
+    <string name="login_page">Login Page</string>
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
 </resources>
