@@ -17,7 +17,7 @@
         app:layout_constraintTop_toBottomOf="@+id/button_settings_activity_save" />
 
     <Button
-        android:id="@+id/button_settings_activity_save3"
+        android:id="@+id/userProfileActivityLogoutButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/logout"
