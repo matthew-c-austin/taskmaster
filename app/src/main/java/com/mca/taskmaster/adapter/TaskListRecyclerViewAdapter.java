@@ -1,5 +1,6 @@
 package com.mca.taskmaster.adapter;
 
+import static com.mca.taskmaster.MainActivity.TASK_ATTACHMENT_EXTRA_TAG;
 import static com.mca.taskmaster.MainActivity.TASK_DESCRIPTION_EXTRAS_TAG;
 import static com.mca.taskmaster.MainActivity.TASK_NAME_EXTRAS_TAG;
 import static com.mca.taskmaster.MainActivity.TASK_STATUS_EXTRAS_TAG;
@@ -54,7 +55,8 @@ public class TaskListRecyclerViewAdapter extends RecyclerView.Adapter<TaskListRe
 
             String taskName = task.getTitle();
             goToTaskDetailsIntent.putExtra(TASK_NAME_EXTRAS_TAG, taskName);
-
+            String taskImage = task.getAttachment();
+            goToTaskDetailsIntent.putExtra(TASK_ATTACHMENT_EXTRA_TAG, taskImage);
             String taskDescription = task.getBody();
             goToTaskDetailsIntent.putExtra(TASK_DESCRIPTION_EXTRAS_TAG, taskDescription);
             String taskStatus =task.getStatus().toString();

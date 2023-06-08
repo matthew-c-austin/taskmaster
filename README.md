@@ -4,6 +4,15 @@ TaskMaster is a task manager app for Android.
 
 ## Changelog
 
+### Lab 37
+
+- Adds Amplify Storage
+  - Adding a task has an optional attachment component.
+    - Tapping the attachment button brings up the Android file picker and saves the file with the task.
+    - Currently only jpeg or png files are accepted.
+    - The attachment is saved in AWS S3 and the key is saved with the task in DynamoDB.
+  - The task details activity has been updated to display the image of the task if one exists.
+
 ### Lab 36
 
 - Adds Amplify Auth
@@ -94,7 +103,7 @@ The homepage has a list of 3 hardcoded tasks that link to dynamically titled tas
 
 ### Task Details
 
-The task details activity display a title the is taken from the corresponding button on the homepage. Additionally there is some placeholder lorem ipsum description of the task.
+The task details activity display a title the is taken from the corresponding button on the homepage. Additionally there is some placeholder lorem ipsum description of the task. The task details activity displays a title, status, and description for each task. Tasks also will display an optional attachment. The data for the tasks are stored in the cloud via an Amplify database.
 
 [![main page](screenshots/lab-28/task-detail-activity-01.PNG)](screenshots/lab-27/task-detail-activity-01.PNG)
 [![main page](screenshots/lab-28/task-detail-activity-02.PNG)](screenshots/lab-27/task-detail-activity-02.PNG)

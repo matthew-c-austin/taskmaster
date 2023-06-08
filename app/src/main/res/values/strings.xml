@@ -35,4 +35,6 @@
     <string name="login_page">Login Page</string>
     <string name="login">Login</string>
     <string name="logout">Logout</string>
+    <string name="add_image">add image</string>
+    <string name="task_image">task image</string>
 </resources>
