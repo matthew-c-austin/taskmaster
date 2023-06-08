@@ -2,10 +2,12 @@ package com.mca.taskmaster.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,9 +15,13 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.amplifyframework.api.graphql.model.ModelQuery;
+import com.amplifyframework.auth.AuthUser;
+import com.amplifyframework.auth.cognito.result.AWSCognitoAuthSignOutResult;
+import com.amplifyframework.auth.options.AuthSignOutOptions;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Team;
 import com.mca.taskmaster.R;
+import com.mca.taskmaster.activities.authentication.LoginActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +32,7 @@ public class SettingsActivity extends AppCompatActivity {
     public static final String TEAM_TAG = "team";
     public static final String TAG = "settings_activity";
     Spinner taskTeamSpinner = null;
+    AuthUser authUser;
     SharedPreferences preferences;
 
     @Override
@@ -38,6 +45,45 @@ public class SettingsActivity extends AppCompatActivity {
         populateUsernameEditText(preferences);
         populateTeamSpinner(preferences);
         setupSaveButton(preferences);
+        setUpLoginButton();
+        setUpLogoutButton();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        // Class-36 Follow up: The call below kicks off the check for an auth user used to determine which buttons to display
+        checkForAuthUser();
+    }
+
+    public void checkForAuthUser() {
+        Amplify.Auth.getCurrentUser(
+                success -> {
+                    Log.i(TAG, "User authenticated with username: " + success.getUsername());
+                    authUser = success;
+                    runOnUiThread(this::renderButtons);
+                },
+                failure -> {
+                    Log.i(TAG, "There is no current authenticated user");
+                    authUser = null;
+                    runOnUiThread(this::renderButtons);
+                }
+        );
+    }
+
+    public void renderButtons() {
+        if (authUser == null) {
+            Button loginButton = findViewById(R.id.userProfileActivityLoginButton);
+            loginButton.setVisibility(View.VISIBLE);
+            Button logoutButton = findViewById(R.id.userProfileActivityLogoutButton);
+            logoutButton.setVisibility(View.INVISIBLE);
+        } else {
+            Button loginButton = findViewById(R.id.userProfileActivityLoginButton);
+            loginButton.setVisibility(View.INVISIBLE);
+            Button logoutButton = findViewById(R.id.userProfileActivityLogoutButton);
+            logoutButton.setVisibility(View.VISIBLE);
+        }
     }
 
     public void populateUsernameEditText(SharedPreferences preferences) {
@@ -94,6 +140,34 @@ public class SettingsActivity extends AppCompatActivity {
             preferenceEditor.apply(); // Nothing will happen if you don't do this!
 
             Toast.makeText(SettingsActivity.this, "Settings saved!", Toast.LENGTH_SHORT).show();
+        });
+    }
+
+    public void setUpLoginButton() {
+        Button loginButton = findViewById(R.id.userProfileActivityLoginButton);
+        loginButton.setOnClickListener(v -> {
+            Intent goToLoginActivity = new Intent(SettingsActivity.this, LoginActivity.class);
+            startActivity(goToLoginActivity);
+        });
+    }
+
+    public void setUpLogoutButton() {
+        Button logoutButton = findViewById(R.id.userProfileActivityLogoutButton);
+        logoutButton.setOnClickListener(v -> {
+            // Amplify User Logout code block
+            AuthSignOutOptions options = AuthSignOutOptions.builder()
+                    .globalSignOut(true)
+                    .build();
+
+            Amplify.Auth.signOut(options, signOutResult -> {
+                if (signOutResult instanceof AWSCognitoAuthSignOutResult.CompleteSignOut) {
+                    Log.i(TAG,"Global logout successful!");
+                } else if (signOutResult instanceof AWSCognitoAuthSignOutResult.PartialSignOut) {
+                    Log.i(TAG,"Partial logout successful!");
+                } else if (signOutResult instanceof AWSCognitoAuthSignOutResult.FailedSignOut) {
+                    Log.i(TAG,"Logout failed: " + signOutResult.toString());
+                }
+            });
         });
     }
 }
