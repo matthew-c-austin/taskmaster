@@ -12,11 +12,14 @@
       "AmplifyAppId": "d4kkz3p5uxw1q"
     },
     "categories": {
-      "api": {
-        "taskmaster": {}
-      },
       "auth": {
         "taskmaster0f25ff33": {}
+      },
+      "storage": {
+        "s3f6a03d2f": {}
+      },
+      "api": {
+        "taskmaster": {}
       }
     }
   }

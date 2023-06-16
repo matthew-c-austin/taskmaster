@@ -5,6 +5,7 @@ query GetTask($id: ID!) {
     title
     body
     status
+    attachment
     teamId
     team {
       id
@@ -30,6 +31,7 @@ query ListTasks(
       title
       body
       status
+      attachment
       teamId
       team {
         id
@@ -53,6 +55,7 @@ query GetTeam($id: ID!) {
         title
         body
         status
+        attachment
         teamId
         createdAt
         updatedAt
@@ -102,6 +105,7 @@ query TasksByTeamIdAndTitle(
       title
       body
       status
+      attachment
       teamId
       team {
         id

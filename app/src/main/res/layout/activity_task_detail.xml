@@ -23,16 +23,16 @@
     <TextView
         android:id="@+id/taskDetailTextView"
         android:layout_width="280dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="32dp"
         android:layout_marginEnd="64dp"
+        android:layout_marginBottom="64dp"
         android:breakStrategy="high_quality"
         android:text="@string/task_detail_text_view"
         android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/taskStatusTextView"
         tools:ignore="TextSizeCheck" />
 
     <TextView
@@ -43,4 +43,19 @@
         android:text="@string/task_status"
         app:layout_constraintStart_toStartOf="@+id/taskDetailTextView"
         app:layout_constraintTop_toBottomOf="@+id/text_view_task_detail_activity_task_title" />
+
+    <ImageView
+        android:id="@+id/image_view_task_detail_attachment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="32dp"
+        android:contentDescription="@string/task_image"
+        app:layout_constraintBottom_toTopOf="@+id/taskDetailTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/taskStatusTextView"
+        app:srcCompat="@drawable/ic_launcher_foreground" />
 </androidx.constraintlayout.widget.ConstraintLayout>
